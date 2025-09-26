@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GenişKapı Downloader</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f0f4f8, #e2e8f0);
+      color: #2d3748;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 24px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #2b6cb0;
+    }
+
+    p {
+      margin-bottom: 30px;
+      font-size: 0.95rem;
+      color: #4a5568;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.3s ease;
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn-blue {
+      background: #2b6cb0;
+      color: #fff;
+    }
+    .btn-blue:hover {
+      background: #2c5282;
+    }
+
+    .btn-green {
+      background: #38a169;
+      color: #fff;
+    }
+    .btn-green:hover {
+      background: #2f855a;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #a0aec0;
+      color: #2d3748;
+    }
+    .btn-outline:hover {
+      background: #edf2f7;
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 0.8rem;
+      color: #718096;
+    }
+
+    a {
+      color: #2b6cb0;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://img.icons8.com/ios-filled/100/2b6cb0/downloads-folder.png" alt="Logo" class="logo" />
+    <h1>Browser Downloader</h1>
+    <p>Hızlı, modern tarayıcı!</p>
+
+    <!-- Butonlar sitelere yönlendiriyor -->
+    <button class="btn btn-blue" onclick="window.location.href='https://example.com/normal';">📦 Normal indir</button>
+    <button class="btn btn-green" onclick="window.location.href='https://example.com/fast';">👍 Hızlı indir</button>
+    <button class="btn btn-outline" onclick="downloadFile()">⬇️ Çalışmadıysa tıkla!</button>
+
+    <footer>
+      <p>Made with Meriç</p>
+    </footer>
+  </div>
+
+  <script>
+    function downloadFile() {
+      const data = { name: "GenişKapı Arama Motoru", version: "2.0" };
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "blocks.json";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
